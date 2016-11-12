@@ -1,14 +1,17 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
- 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %></p>
-
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
+<ul class="collection">
+  <li class="collection-item avatar">
+    <%= image_tag "user.png", :class => "circle" %>
+    <span class="title"><%= comment.commenter %></span>
+    <div class="row">
+      <div class="divider col l10 m9 s6"></div>
+    </div>
+    <p><strong>Comment:</strong><br>
+      <%= comment.body %>
+    </p>
+    <%= link_to [comment.article, comment],
+                method: :delete,
+                data: {confirm: 'Are you sure?'}, :class => "secondary-content" do %>
+        <i class="material-icons left">delete</i>Destroy Comment
+    <% end %>
+  </li>
+</ul>

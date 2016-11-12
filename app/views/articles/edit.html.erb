@@ -1,5 +1,18 @@
-<h1>New article</h1>
- 
-<%= render 'form' %>
- 
-<%= link_to 'Back', articles_path %>
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <ul class="left">
+      <li>
+        <%= link_to articles_path do %>
+            <i class="material-icons left">chevron_left</i>Back
+        <% end %>
+      </li>
+    </ul>
+    <a class="brand-logo center">Edit Article</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="section">
+    <%= render 'form' %>
+  </div>
+</div>

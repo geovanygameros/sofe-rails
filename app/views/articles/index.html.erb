@@ -1,28 +1,56 @@
-<h1>Listing articles</h1>
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <ul class="right">
+      <li>
+        <%= link_to new_article_path do %>
+            <i class="material-icons left">add</i>New article
+        <% end %>
+      </li>
+    </ul>
+    <a class="brand-logo">Listing articles</a>
+  </div>
+</nav>
 
+<nav>
+  <div class="nav-wrapper grey lighten-2">
+    <%= form_tag articles_path, :method => 'get' do %>
+        <div class="input-field">
+          <%= text_field_tag :search, params[:search], :type => "search" %>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+    <% end %>
+  </div>
+</nav>
 
-<%= form_tag articles_path, :method => 'get' do %>
+<div class="section row">
+  <table class="striped col l10 m10 s10 offset-l1 offset-s1 offset-m1">
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
 
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "search", :title => nil %>
-<% end %>
-
-
-<%= link_to 'New article', new_article_path %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="2"></th>
-  </tr>
- 
-<% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.text %></td>
-    <td><%= link_to 'Show', article_path(article) %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.text %></td>
+          <td>
+            <%= link_to article_path(article), :class => "waves-effect waves-light btn blue col s5 l6 m8" do %>
+                <i class="material-icons left">remove_red_eye</i>Show
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_article_path(article), :class => "waves-effect waves-light btn teal lighten-1 col s5 m8 l6" do %>
+                <i class="material-icons left">mode_edit</i>Edit
+            <% end %>
+          </td>
+          <td>
+            <%= link_to article_path(article), method: :delete, data: {confirm: 'Are you sure?'}, :class => "waves-effect waves-light btn red darken-1 col s5 l6 m8" do %>
+                <i class="material-icons left">delete</i>Delete
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>

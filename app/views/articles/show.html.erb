@@ -1,18 +1,46 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <ul class="left">
+      <li>
+        <%= link_to articles_path do %>
+            <i class="material-icons left">chevron_left</i>Back
+        <% end %>
+      </li>
+    </ul>
+    <a class="brand-logo center">Show Article</a>
+    <ul class="right">
+      <li>
+        <%= link_to edit_article_path(@article) do %>
+            <i class="material-icons left">mode_edit</i>Edit
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+<div class="container">
+  <h1><%= @article.title %></h1>
+  <p>
+    <%= @article.text %>
+  </p>
+</div>
+<div class="divider"></div>
+<div class="container">
+  <div class="section">
+    <h4>Comments</h4>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+    <%= render @article.comments %>
+  </div>
+</div>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
-
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
-
-<%= link_to 'Back', articles_path %>
-<%= link_to 'Edit', edit_article_path(@article) %>
+<div class="container">
+  <div class="section">
+    <h4>Add a comment:</h4>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+    <%= render "comments/form" %>
+  </div>
+</div>
