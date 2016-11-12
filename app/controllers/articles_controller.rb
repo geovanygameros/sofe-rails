@@ -31,7 +31,7 @@ def update
 end
 
 	def edit
-		@article = Article.find(params[1])
+		@article = Article.find(params[:id])
 	end	
 
 	def index
