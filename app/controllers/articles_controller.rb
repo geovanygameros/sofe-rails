@@ -1,9 +1,8 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "admin", password: "admin", except: [:index, :show]
 
   def index
-    @articles = Article.where("title LIKE ? OR text LIKE?" , "%#{params[:search]}%", "%#{params[:search]}%")
+    @articles = Article.where("title LIKE ? OR text LIKE?" , "%#{params[:search]}%", "%#{params[:search]}%" )
   end
 
 
